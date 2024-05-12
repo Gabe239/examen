@@ -5,7 +5,7 @@ class MyTheme {
 
   static final ThemeData myTheme = ThemeData(
     primaryColor: primary,
-    brightness: Brightness.dark, // Set brightness to dark for night mode
+    brightness: Brightness.dark, 
     fontFamily: 'Releway',
     appBarTheme: const AppBarTheme(
       color: primary,

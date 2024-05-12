@@ -8,8 +8,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-
   @override
   void initState() {
     super.initState();
@@ -20,6 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Inicio'),
+        automaticallyImplyLeading: false, // Hide the back arrow
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(20.0),

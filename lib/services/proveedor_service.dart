@@ -145,7 +145,7 @@ class ProviderService extends ChangeNotifier {
     );
     String basicAuth = 'Basic ' + base64Encode(utf8.encode('$_user:$_pass'));
     final response = await http
-        .post(url, body: json.encode({'providerid': provider.id}), headers: {
+        .post(url, body: json.encode({'provider_id': provider.id}), headers: {
       'authorization': basicAuth,
       'Content-type': 'application/json; charset=UTF-8',
     });
@@ -153,7 +153,6 @@ class ProviderService extends ChangeNotifier {
     print(decodeResp);
     this.providers.clear();
     await loadProviders();
-    Navigator.of(context).pushNamed('list');
     return '';
   }
 }
