@@ -13,7 +13,15 @@ class ListProductScreen extends StatelessWidget {
     if (productService.isLoading) return LoadingScreen();
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Listado de productos'),
+        title: Text('Módulo de productos'),
+        automaticallyImplyLeading: false, 
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), 
+          onPressed: () {
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'home', (route) => false);
+          },
+        ),
       ),
       body: ListView.builder(
         itemCount: productService.products.length,

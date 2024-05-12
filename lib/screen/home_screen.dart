@@ -9,11 +9,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -25,30 +20,62 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ElevatedButton(
+            _ModuleCard(
+              title: 'Módulo de Proveedores',
               onPressed: () {
-                // Navegar al módulo de Proveedores
                 Navigator.pushReplacementNamed(context, 'proveedor');
               },
-              child: Text('Módulo de Proveedores'),
             ),
             SizedBox(height: 20.0),
-            ElevatedButton(
+            _ModuleCard(
+              title: 'Módulo de Categorías',
               onPressed: () {
-                // Navegar al módulo de Categorías
                 Navigator.pushReplacementNamed(context, 'categoria');
               },
-              child: Text('Módulo de Categorías'),
             ),
             SizedBox(height: 20.0),
-            ElevatedButton(
+            _ModuleCard(
+              title: 'Módulo de Productos',
               onPressed: () {
-                // Navegar al módulo de Productos
                 Navigator.pushReplacementNamed(context, 'list');
               },
-              child: Text('Módulo de Productos'),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class _ModuleCard extends StatelessWidget {
+  final String title;
+  final VoidCallback onPressed;
+
+  const _ModuleCard({
+    required this.title,
+    required this.onPressed,
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 4, // Add elevation for a shadow effect
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15), // Rounded corners
+      ),
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(15),
+        child: Container(
+          padding: EdgeInsets.all(20),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
       ),
     );

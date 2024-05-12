@@ -17,7 +17,7 @@ class _CategoriaScreenState extends State<CategoriaScreen> {
   void initState() {
     super.initState();
     categoriaService.loadCategorias().then((_) {
-      setState(() {}); // Update UI after loading categories
+      setState(() {}); 
     });
   }
 
@@ -25,12 +25,20 @@ class _CategoriaScreenState extends State<CategoriaScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Categorías'),
+        title: Text('Módulo de Categorias'),
+        automaticallyImplyLeading: false, 
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), 
+          onPressed: () {
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'home', (route) => false);
+          },
+        ),
       ),
       body: RefreshIndicator(
         onRefresh: () async {
           await categoriaService.loadCategorias();
-          setState(() {}); // Update UI after refreshing categories
+          setState(() {}); 
         },
         child: ListView.builder(
           itemCount: categoriaService.categorias.length,

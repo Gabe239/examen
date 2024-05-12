@@ -4,7 +4,7 @@ import 'package:examen/services/services.dart';
 import 'package:provider/provider.dart';
 
 class ProvidersScreen extends StatelessWidget {
-  const ProvidersScreen({Key? key}) : super(key: key); 
+  const ProvidersScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +14,14 @@ class ProvidersScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Módulo de Proveedores'),
+        automaticallyImplyLeading: false, 
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back), 
+          onPressed: () {
+            Navigator.pushNamedAndRemoveUntil(
+                context, 'home', (route) => false);
+          },
+        ),
       ),
       body: ListView.builder(
         itemCount: providers.length,
@@ -71,7 +79,7 @@ class ProvidersScreen extends StatelessWidget {
 }
 
 class ProviderDetailScreen extends StatelessWidget {
-  final Proveedor provider; 
+  final Proveedor provider;
 
   ProviderDetailScreen(this.provider);
 
@@ -103,10 +111,14 @@ class ProviderEditScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final providerService = Provider.of<ProviderService>(context);
-    TextEditingController nameController = TextEditingController(text: provider.name);
-    TextEditingController lastNameController = TextEditingController(text: provider.lastName);
-    TextEditingController mailController = TextEditingController(text: provider.mail);
-    TextEditingController stateController = TextEditingController(text: provider.state);
+    TextEditingController nameController =
+        TextEditingController(text: provider.name);
+    TextEditingController lastNameController =
+        TextEditingController(text: provider.lastName);
+    TextEditingController mailController =
+        TextEditingController(text: provider.mail);
+    TextEditingController stateController =
+        TextEditingController(text: provider.state);
 
     return Scaffold(
       appBar: AppBar(
@@ -192,7 +204,7 @@ class ProviderAddScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Proveedor newProvider = Proveedor(
-                  id: 0, 
+                  id: 0,
                   name: nameController.text,
                   lastName: lastNameController.text,
                   mail: mailController.text,

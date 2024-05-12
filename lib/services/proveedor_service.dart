@@ -76,11 +76,11 @@ class ProviderService extends ChangeNotifier {
     final response = await http.post(
       url,
       body: json.encode({
-        'provider_id': provider.id, // Include provider ID in payload
+        'provider_id': provider.id, 
         'provider_name': provider.name,
         'provider_last_name': provider.lastName,
         'provider_mail': provider.mail,
-        'provider_state': provider.state, // Include provider state in payload
+        'provider_state': provider.state, 
       }),
       headers: {
         'authorization': basicAuth,
@@ -89,7 +89,6 @@ class ProviderService extends ChangeNotifier {
     );
     
     if (response.statusCode == 200) {
-      // Update the local list of providers if the update in the database was successful
       final index = providers.indexWhere((element) => element.id == provider.id);
       if (index != -1) {
         providers[index] = provider;
